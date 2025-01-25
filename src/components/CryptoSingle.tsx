@@ -17,19 +17,12 @@ import {
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useOutletContext } from 'react-router-dom'
-import { CryptoProps } from "../types";
+import { CryptoProps, CurrencyType, LoadingAndErrorType } from "../types";
 
 
 Chart.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale);
 
-interface CurrencyType {
-    [key: string]: number
-}
 
-interface LoadingAndErrorType {
-    loading: boolean
-    error: string | null;
-}
 function CryptoSingle() {
     const { id } = useParams()
     const [currencies, setCurrency] = useState<CurrencyType>({'USD': 1})
@@ -65,7 +58,6 @@ useEffect(()=>{
                 throw new Error('An error occurred while fetching')
             }
             const data = await response.json()
-            console.log('new',data.conversion_rates)
             setCurrency(data.conversion_rates)
         } catch (error: any) {
             setLoadingAndError(prev => (
@@ -120,13 +112,13 @@ useEffect(()=>{
     if(error){
         return <p>Error: {error}</p>
         }
-
+    
     return (
         <div>
             <NavLink to={'/'} className='md:text-3xl px-4 pb-2 pt-2 rounded-2xl'><IoReturnUpBack className="font-bold inline" /> Back to all crypto</NavLink>
 
             { <h1 className="mt-4 text-center font-bold text-3xl">{id.toUpperCase()}</h1> }
-            <section>
+                { loadingAndError.loading? <p>loading...</p>:  <section>
                 <div className="w-full md:w-3/5 font-bold">        
                     <input type="number" className={`w-2/5 mt-6 remove-arrow ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none  pl-4 pt-2 pb-2 text-2xl border-t-2 border-l-2 border-b-2 border-indigo-900 rounded-tl-md rounded-bl-md`} onChange={handleAmount} value={amount}/>
 
@@ -135,9 +127,9 @@ useEffect(()=>{
                 </div>
                 <div className="w-full md:w-3/5 font-bold">
 
-                    <input type="text" onChange={handleCurrencySearch} value={chosenCurrency? chosenCurrency: searchCurrency}  placeholder="Enter a currency"  className={`w-96 mt-6  ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none  pl-4 pt-2 pb-2 text-2xl border-2 border-b-2 border-indigo-900 rounded-md`} />
+                    <input type="text" onChange={handleCurrencySearch} value={chosenCurrency? chosenCurrency: searchCurrency}  placeholder="Enter a currency"  className={`md:w-96 w-64 mt-6  ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none  pl-4 pt-2 pb-2 text-2xl border-2 border-b-2 border-indigo-900 rounded-md`} />
 
-                    {chosenCurrency && <span className= {`${darkMode? 'bg-gray-800': 'bg-gray-50'} px-4 md:ml-2 border-indigo-900 border-b-4  py-2 block md:inline mt-4 `}> {chosenCurrency } {convertedPrice? new Intl.NumberFormat('en-US').format(convertedPrice): '' }</span>}
+                    {chosenCurrency && <span className= {`${darkMode? 'bg-gray-800': 'bg-gray-50'} px-4 md:ml-2 border-indigo-900 border-b-4 w-64  py-2 block md:inline mt-4 `}> {chosenCurrency } {convertedPrice? new Intl.NumberFormat('en-US').format(convertedPrice): '' }</span>}
 
                     {chosenCurrency && <button className="px-4 py-2 bg-red-500 rounded-xl block mt-4" onClick={handleClear}>clear filter</button>}
                     {
@@ -145,7 +137,7 @@ useEffect(()=>{
                     }
                     
                 </div>
-            </section>
+            </section>}
             {  
                     <Line
                         data={{

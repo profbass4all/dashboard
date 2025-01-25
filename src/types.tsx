@@ -33,3 +33,12 @@ export interface CryptoProps {
     loading: boolean | null
     error: string | null
 }
+
+export interface CurrencyType {
+    [key: string]: number
+}
+
+export interface LoadingAndErrorType {
+    loading: boolean
+    error: string | null;
+}
