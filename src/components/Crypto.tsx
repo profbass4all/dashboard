@@ -91,7 +91,7 @@ return (
                                 <Link to={`crypto/${coin.id}`}>{coin.id}</Link>
                             </td>
                             <td className='py-4 pr-4'><Link to={`crypto/${coin.id}`}>{formatter.format(coin.current_price)}</Link></td>
-                            <td className={`py-4 pr-4 ${coin.price_change_percentage_24h > 0? 'text-green-400': coin.price_change_percentage_24h < 0 ? 'text-red-400': ''}`}><Link to={`crypto/${coin.id}`}>{coin.price_change_percentage_24h.toFixed(2)}%</Link></td>
+                            <td className={`py-4 pr-4 ${coin.price_change_percentage_24h > 0 ? 'text-green-400': coin.price_change_percentage_24h < 0 ? 'text-red-400': ''}`}><Link to={`crypto/${coin.id}`}>{coin.price_change_percentage_24h.toFixed(2)}%</Link></td>
                             <td className='py-4 pr-4'><Link to={`crypto/${coin.id}`}>{formatter.format(coin.market_cap)}</Link></td>
                             <td className='py-4 pr-4'><Link to={`crypto/${coin.id}`}>{formatter.format(coin.total_volume)}</Link></td>
                             <td className='py-4 pr-4'><Link to={`crypto/${coin.id}`}>{formatter.format(coin.ath)}</Link></td>

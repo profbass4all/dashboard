@@ -118,12 +118,14 @@ useEffect(()=>{
             <NavLink to={'/'} className='md:text-3xl px-4 pb-2 pt-2 rounded-2xl'><IoReturnUpBack className="font-bold inline" /> Back to all crypto</NavLink>
 
             { <h1 className="mt-4 text-center font-bold text-3xl">{id.toUpperCase()}</h1> }
-                { loadingAndError.loading? <p>loading...</p>:  <section>
-                <div className="w-full md:w-3/5 font-bold">        
-                    <input type="number" className={`w-2/5 mt-6 remove-arrow ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none  pl-4 pt-2 pb-2 text-2xl border-t-2 border-l-2 border-b-2 border-indigo-900 rounded-tl-md rounded-bl-md`} onChange={handleAmount} value={amount}/>
+                { loadingAndError.loading? <p>loading...</p>:  
+                
+                <section>
+                <div className="w-full md:w-3/5 font-normal flex items-stretch mt-12 ">        
+                    <input type="number" className={`w-2/5  remove-arrow ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none pl-4 pt-2 pb-2 text-2xl border-t-2 border-l-2 border-b-2 border-indigo-900 rounded-tl-md rounded-bl-md`} onChange={handleAmount} value={amount}/>
 
 
-                    <span className={`text-2xl ${darkMode? 'bg-gray-800': 'bg-gray-50'} border-t-2 border-r-2 border-b-2 w-2/5 pl-2 border-indigo-900 font-semibold pt-2 pr-2 pb-2 ml-0 rounded-tr-md rounded-br-md`}>{id.toUpperCase()}</span>
+                    <span className={`text-base ${darkMode? 'bg-gray-800': 'bg-gray-50'} border-t-2 border-r-2 text-right border-b-2 w-2/5 pl-2 border-indigo-900 font-semibold py-2 pr-2 ml-[-1] rounded-tr-md rounded-br-md`}>{id.toUpperCase()}</span>
                 </div>
                 <div className="w-full md:w-3/5 font-bold">
 
