@@ -129,7 +129,7 @@ useEffect(()=>{
 
                     <input type="text" onChange={handleCurrencySearch} value={chosenCurrency? chosenCurrency: searchCurrency}  placeholder="Enter a currency"  className={`md:w-96 w-64 mt-6  ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none  pl-4 pt-2 pb-2 text-2xl border-2 border-b-2 border-indigo-900 rounded-md`} />
 
-                    {chosenCurrency && <span className= {`${darkMode? 'bg-gray-800': 'bg-gray-50'} px-4 md:ml-2 border-indigo-900 border-b-4 w-64  py-2 block md:inline mt-4 `}> {chosenCurrency } {convertedPrice? new Intl.NumberFormat('en-US').format(convertedPrice): '' }</span>}
+                    {chosenCurrency && <span className= {`${darkMode? 'bg-gray-800': 'bg-gray-50'} px-4 md:ml-2 border-indigo-900 border-b-4 w-64  py-2 block md:inline mt-4 `}> {convertedPrice && chosenCurrency } {convertedPrice? new Intl.NumberFormat('en-US').format(convertedPrice): '' }</span>}
 
                     {chosenCurrency && <button className="px-4 py-2 bg-red-500 rounded-xl block mt-4" onClick={handleClear}>clear filter</button>}
                     {
