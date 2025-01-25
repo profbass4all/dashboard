@@ -1,45 +1,44 @@
-import { useEffect, useState } from 'react'
-import { useOutletContext } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+// import { useEffect, useState } from 'react'
+// import { useOutletContext } from 'react-router-dom'
 
 // I couldn't complate this page because the api rate limit was too low for a day
 const Stock = () => {
-    const [stock, setStock] = useState([])
-    const [loading, setLoading] = useState<boolean | null>(null)
-    const [error, setError] = useState(null)
-    const [searchTerm, setSearchTerm] = useState('AA')
-    const { darkMode } = useOutletContext<{darkMode: boolean}>()
+    // const [stock, setStock] = useState([])
+    // const [loading, setLoading] = useState<boolean | null>(null)
+    // // const [error, setError] = useState(null)
+    // const [searchTerm, setSearchTerm] = useState('AA')
+    // const { darkMode } = useOutletContext<{darkMode: boolean}>()
 
     // https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbols}&apikey=${apikey}
 
     // https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=${apikey}
-    useEffect(()=>{
+    // useEffect(()=>{
         
-        async function getStock(){
-          const symbols = ['AAPL', 'MSFT', 'GOOGL']
-          const apikey = 'D2D9CHMYQVN5UORO'
-            try {
-                setLoading(true)
-                const reponse = await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchTerm}&apikey=${apikey}`)
-                if(!reponse.ok){
-                    throw new Error('An error occurred while fetching')
-                }
-                const data = await reponse.json()
-                console.log(data)
-                setStock(data.bestMatches)
+    //     async function getStock(){
+    //       const symbols = ['AAPL', 'MSFT', 'GOOGL']
+    //       const apikey = 'D2D9CHMYQVN5UORO'
+    //         try {
+    //             setLoading(true)
+    //             const reponse = await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchTerm}&apikey=${apikey}`)
+    //             if(!reponse.ok){
+    //                 throw new Error('An error occurred while fetching')
+    //             }
+    //             const data = await reponse.json()
+    //             console.log(data)
+    //             setStock(data.bestMatches)
 
-            } catch (error: any) {
-                setError(error.message)
-            } finally{
-                setLoading(false)
-            }
-        }
-        getStock()
-    }, [])
+    //         } catch (error: any) {
+    //             setError(error.message)
+    //         } finally{
+    //             setLoading(false)
+    //         }
+    //     }
+    //     getStock()
+    // }, [])
     
-    function handleSearch(e: React.ChangeEvent<HTMLInputElement>): void {
-        setSearchTerm(e.target.value.trim());
-    }
+    // function handleSearch(e: React.ChangeEvent<HTMLInputElement>): void {
+    //     setSearchTerm(e.target.value.trim());
+    // }
     
 //     const formatter = new Intl.NumberFormat('en-US', {
 //     style: 'currency',
@@ -48,9 +47,9 @@ const Stock = () => {
 // });
 
     
-    if(loading || !crypto){
-        return <p>Loading...</p>
-    }
+    // if(loading || !crypto){
+    //     return <p>Loading...</p>
+    // }
     // if(error){
     //     return <p>Error: {error}</p>
     // }

@@ -36,9 +36,9 @@ const {
     if(loading || !crypto){
         return <p>Loading...</p>
     }
-    // if(error){
-    //     return <p>Error: {error}</p>
-    // }
+    if(error){
+        return <p>Error: {error}</p>
+    }
     
 
 return (
