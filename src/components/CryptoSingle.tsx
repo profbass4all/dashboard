@@ -130,8 +130,8 @@ useEffect(()=>{
             
                 { loadingAndError.loading? <p>loading...</p>:  
                 
-                <section>
-                <div className="w-full md:w-3/5 font-normal flex items-stretch mt-12 ">        
+                <section className="mb-12">
+                <div className="w-full md:w-3/5 font-normal flex items-stretch mt-6">        
                     <input type="number" className={`w-2/5  remove-arrow ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none pl-4 pt-2 pb-2 text-2xl border-t-2 border-l-2 border-b-2 border-violet-400 rounded-tl-md rounded-bl-md`} onChange={handleAmount} value={amount}/>
 
 
