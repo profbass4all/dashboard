@@ -21,9 +21,10 @@ interface OptionsTypes {
     optionB: string
 }
 function Compare() {
-    const [options, setOptions] = useState<OptionsTypes>({optionA: "dogecoin", optionB: "hedera-hashgraph"})
-    const { prices: priceA } = useGetSingleCrypto(options.optionA|| 'dogecoin' )
-    const { prices: priceB } = useGetSingleCrypto(options.optionB || 'hedera-hashgraph')
+    const [options, setOptions] = useState<OptionsTypes>({optionA: "", optionB: ""})
+    const [compare, setCompare] = useState<OptionsTypes>({optionA: "dogecoin", optionB: "hedera-hashgraph"})
+    const { prices: priceA } = useGetSingleCrypto(compare.optionA|| 'dogecoin' )
+    const { prices: priceB } = useGetSingleCrypto(compare.optionB || 'hedera-hashgraph')
     
 //this function sets the state of the options
     function handleChange(e: React.ChangeEvent<HTMLInputElement>){
@@ -35,6 +36,15 @@ function Compare() {
         })
     }
 
+    function handleCompare(){
+        if(!options.optionA || !options.optionB){
+            alert("Please enter both options")
+            return
+        }
+        if(options.optionA && options.optionB){
+            setCompare(options)
+        }
+    }
 
     return (
         <>
@@ -45,19 +55,20 @@ function Compare() {
 
             <div className="md:flex md:justify-start gap-4 my-6">
                 <div className="">
-                    <input className={`w-full outline-none pl-4 bg-slate-300 rounded-xl py-1 text-gray-600 font-bold tracking-4 text-base my-4`} type="text" onChange={handleChange} name="optionA"/>
+                    <input placeholder="Enter option A" className={`w-full outline-none pl-4 border-2 border-violet-400 bg-slate-300 rounded-xl py-1 text-gray-600 font-bold tracking-4 text-base my-4`} type="text" onChange={handleChange} name="optionA"/>
 
-                    <p className="font-bold">Option A: <span className="text-xl text-violet-300">{options.optionA}</span></p>
+                    <p className="font-bold">Option A: <span className="text-xl text-violet-400">{options.optionA}</span></p>
 
                 </div>
                 <div>
 
-                    <input className={`w-full outline-none pl-4 bg-slate-300 rounded-xl py-1 text-gray-600 font-bold tracking-4 text-base my-4`} type="text" onChange={handleChange} name="optionB"/>
+                    <input placeholder="Enter option B" className={`w-full outline-none border-2 border-violet-400 pl-4 bg-slate-300 rounded-xl py-1 text-gray-600 font-bold tracking-4 text-base my-4`} type="text" onChange={handleChange} name="optionB"/>
 
-                    <p className="font-bold">Option B: <span className="text-xl text-violet-300">{options.optionB}</span></p>
+                    <p className="font-bold">Option B: <span className="text-xl text-violet-400">{options.optionB}</span></p>
 
                 </div>
             </div>
+            <button className="px-4 py-2 bg-violet-400 font-semibold hover:bg-violet-600 rounded" onClick={handleCompare}>Compare</button>
 
             {
                 <Line

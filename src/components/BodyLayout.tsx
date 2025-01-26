@@ -43,7 +43,7 @@ function HeaderLayout() {
     const fontColor = darkMode? 'text-gray-200': 'text-zinc-950'
     
     const activeStyles ={
-        backgroundColor: 'purple'
+        backgroundColor: '#a78bfa'
     }
     const nonActiveStyles = {
         backgroundColor: ''
@@ -57,11 +57,9 @@ function HeaderLayout() {
                     <Header>
                     <nav className="h-24 flex items-center justify-between md:justify-start md:gap-6 text-base font-bold">
 
-                        <NavLink to="." style={({ isActive }) => isActive? activeStyles: nonActiveStyles } className={`${darkMode? 'hover:bg-violet-900 rounded-xl px-2 py-1': 'hover:bg-violet-900 rounded-xl px-2 py-1' }`}>Crypto</NavLink>
+                        <NavLink to="." style={({ isActive }) => isActive? activeStyles: nonActiveStyles } className={`${'hover:bg-violet-400 rounded-xl px-2 py-1' }`}>Crypto</NavLink>
 
-                        <NavLink to="stocks" style={({ isActive }) => isActive? activeStyles: nonActiveStyles } className={`${darkMode? 'hover:bg-violet-900 rounded-xl px-2 py-1': 'hover:bg-violet-900 rounded-xl px-2 py-1' }`}>Stocks</NavLink>
-
-                        <NavLink to="compare" style={({ isActive }) => isActive? activeStyles: nonActiveStyles } className={`${darkMode? 'hover:bg-violet-900 rounded-xl px-2 py-1': 'hover:bg-violet-900 rounded-xl px-2 py-1' }`}>Compare</NavLink>
+                        <NavLink to="compare" style={({ isActive }) => isActive? activeStyles: nonActiveStyles } className={`${'hover:bg-violet-400 rounded-xl px-2 py-1' }`}>Compare</NavLink>
             {/* //toggling the mode to either dark or light */}
                         {   darkMode? 
                                 <MdOutlineDarkMode onClick={handleDarkMode} className="text-2xl"/>:

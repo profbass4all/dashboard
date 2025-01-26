@@ -72,7 +72,7 @@ return (
                 <tbody>
                 {paginatedPages.map((coin) => {
                 return (
-                        <tr key={coin.id}>
+                        <tr key={coin.id} className='hover:bg-violet-400 hover:rounded'>
                             <td className='text-center font-bold'>{coin.market_cap_rank}</td>
                             <td className=''>
                                     <Link to={`crypto/${coin.id}`}>

@@ -43,6 +43,7 @@ const [convertedPrice, setConvertedPrice] = useState<number>(0)
 
 useEffect(() => {
         handleConvert();
+        getCurrentPrice()
     }, [chosenCurrency, amount]);
 
 const apiKey ='6fc2d21e3a1730a2fa7ee699'
@@ -87,12 +88,14 @@ useEffect(()=>{
 
     function handleCurrencySearchOutput(e: React.MouseEvent<HTMLParagraphElement>){
         setChosenCurrency(e.currentTarget.id)
+        
+    }
+    function getCurrentPrice(){
         const actualCrypto = crypto.find(crypto => crypto.id === id)
         if(!actualCrypto) return
         setCurrentPrice(actualCrypto.current_price)
     }
-    console.log(currentPrice)
-
+    
     function handleConvert(){
         if(!currentPrice) return
         setConvertedPrice((amount * currentPrice * currencies[chosenCurrency]))
@@ -101,6 +104,11 @@ useEffect(()=>{
         return <p className="py-2 font-500 hover:text-blue-600 hover:underline cursor-pointer transition-all duration-200" key={`${currencies}`} onClick={handleCurrencySearchOutput} id={`${currencies}`}>{currencies}</p>
     })
 
+    const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    })
 
     function handleClear(){
         setChosenCurrency('')
@@ -117,21 +125,23 @@ useEffect(()=>{
         <div>
             <NavLink to={'/'} className='md:text-3xl px-4 pb-2 pt-2 rounded-2xl'><IoReturnUpBack className="font-bold inline" /> Back to all crypto</NavLink>
 
-            { <h1 className="mt-4 text-center font-bold text-3xl">{id.toUpperCase()}</h1> }
+                <h1 className="mt-4 text-center font-bold text-3xl">{id.toUpperCase()}</h1> 
+                <h2 className="font-bold text-2xl">Current Price: {currentPrice && formatter.format(currentPrice)}</h2>
+            
                 { loadingAndError.loading? <p>loading...</p>:  
                 
                 <section>
                 <div className="w-full md:w-3/5 font-normal flex items-stretch mt-12 ">        
-                    <input type="number" className={`w-2/5  remove-arrow ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none pl-4 pt-2 pb-2 text-2xl border-t-2 border-l-2 border-b-2 border-indigo-900 rounded-tl-md rounded-bl-md`} onChange={handleAmount} value={amount}/>
+                    <input type="number" className={`w-2/5  remove-arrow ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none pl-4 pt-2 pb-2 text-2xl border-t-2 border-l-2 border-b-2 border-violet-400 rounded-tl-md rounded-bl-md`} onChange={handleAmount} value={amount}/>
 
 
-                    <span className={`text-base ${darkMode? 'bg-gray-800': 'bg-gray-50'} border-t-2 border-r-2 text-right border-b-2 w-2/5 pl-2 border-indigo-900 font-semibold py-2 pr-2 ml-[-1] rounded-tr-md rounded-br-md`}>{id.toUpperCase()}</span>
+                    <span className={`text-base ${darkMode? 'bg-gray-800': 'bg-gray-50'} border-t-2 border-r-2 text-right border-b-2 w-2/5 pl-2 border-violet-400 font-semibold py-2 pr-2 ml-[-1] rounded-tr-md rounded-br-md`}>{id.toUpperCase()}</span>
                 </div>
                 <div className="w-full md:w-3/5 font-bold">
 
-                    <input type="text" onChange={handleCurrencySearch} value={chosenCurrency? chosenCurrency: searchCurrency}  placeholder="Enter a currency"  className={`md:w-96 w-64 mt-6  ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none  pl-4 pt-2 pb-2 text-2xl border-2 border-b-2 border-indigo-900 rounded-md`} />
+                    <input type="text" onChange={handleCurrencySearch} value={chosenCurrency? chosenCurrency: searchCurrency}  placeholder="Enter a currency"  className={`md:w-96 w-64 mt-6  ${darkMode? 'bg-gray-800': 'bg-gray-50'} outline-none  pl-4 pt-2 pb-2 text-2xl border-2 border-b-2 border-violet-400 rounded-md`} />
 
-                    {chosenCurrency && <span className= {`${darkMode? 'bg-gray-800': 'bg-gray-50'} px-4 md:ml-2 border-indigo-900 border-b-4 w-64  py-2 block md:inline mt-4 `}> {convertedPrice && chosenCurrency } {convertedPrice? new Intl.NumberFormat('en-US').format(convertedPrice): '' }</span>}
+                    {chosenCurrency && <span className= {`${darkMode? 'bg-gray-800': 'bg-gray-50'} px-4 md:ml-2 border-violet-400 border-b-4 w-64  py-2 block md:inline mt-4 `}> {convertedPrice && chosenCurrency } {convertedPrice? new Intl.NumberFormat('en-US').format(convertedPrice): '' }</span>}
 
                     {chosenCurrency && <button className="px-4 py-2 bg-red-500 rounded-xl block mt-4" onClick={handleClear}>clear filter</button>}
                     {
