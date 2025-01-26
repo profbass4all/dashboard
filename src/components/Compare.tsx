@@ -68,7 +68,7 @@ function Compare() {
 
                 </div>
             </div>
-            <button className="px-4 py-2 bg-violet-400 font-semibold hover:bg-violet-600 rounded" onClick={handleCompare}>Compare</button>
+            <button className="px-4 py-2 mb-8 bg-violet-400 font-semibold hover:bg-violet-600 rounded" onClick={handleCompare}>Compare</button>
 
             {
                 <Line

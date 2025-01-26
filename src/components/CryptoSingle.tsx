@@ -126,7 +126,7 @@ useEffect(()=>{
             <NavLink to={'/'} className='md:text-3xl px-4 pb-2 pt-2 rounded-2xl'><IoReturnUpBack className="font-bold inline" /> Back to all crypto</NavLink>
 
                 <h1 className="mt-4 text-center font-bold text-3xl">{id.toUpperCase()}</h1> 
-                <h2 className="font-bold text-2xl">Current Price: {currentPrice && formatter.format(currentPrice)}</h2>
+                <h2 className="font-bold mt-4 text-2xl">Current Price: {currentPrice && formatter.format(currentPrice)}</h2>
             
                 { loadingAndError.loading? <p>loading...</p>:  
                 
