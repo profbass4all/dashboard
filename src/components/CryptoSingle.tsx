@@ -122,7 +122,7 @@ useEffect(()=>{
         }
     
     return (
-        <div>
+        <div className="flex-grow">
             <NavLink to={'/'} className='md:text-3xl px-4 pb-2 pt-2 rounded-2xl'><IoReturnUpBack className="font-bold inline" /> Back to all crypto</NavLink>
 
                 <h1 className="mt-4 text-center font-bold text-3xl">{id.toUpperCase()}</h1> 

@@ -42,7 +42,7 @@ const {
     
 
 return (
-        <>
+        <main className='flex-grow'>
         <input type='text' value={searchTerm} onChange={handleSearch}  
             placeholder='Search for cryptocurrency'
             className={`text-gray-900 md:w-2/5 mx-auto rounded-xl mb-8 w-full px-4 py-2 text-lg font-semibold outline-none 
@@ -112,7 +112,7 @@ return (
                     NumberOfPages={NumberOfPages}
                     pageNumber={pageNumber}
                     />
-            </>
+            </main>
         )
 }
 

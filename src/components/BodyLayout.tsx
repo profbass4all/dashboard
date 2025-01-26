@@ -50,7 +50,7 @@ function HeaderLayout() {
     }
     return (
     <>
-        <div className={`${backgroundColor} ${fontColor} h-full md:mx-auto pb-8`}>
+        <div className={`${backgroundColor} ${fontColor} min-h-screen flex flex-col md:mx-auto`}>
 
             <div className="w-11/12 h-full mx-auto">
 
@@ -76,8 +76,10 @@ function HeaderLayout() {
 
                 
             </div>
+            
+            <Footer />
+
         </div>
-        <Footer />
     </>
     )
 }

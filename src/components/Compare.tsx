@@ -47,7 +47,7 @@ function Compare() {
     }
 
     return (
-        <>
+        <main className="flex-grow">
 
             <h1 className="text-bold text-2xl mb-4">Compare the trends of two crypto</h1>
         
@@ -75,14 +75,14 @@ function Compare() {
                     data={{
                                     labels: priceA.map(price=>new Date(price[0]).toLocaleDateString()),
                                     datasets: [{
-                                        label: `Price of ${options.optionA} in USD`,
+                                        label: `Price of ${compare.optionA} in USD`,
                                         data: priceA.map(price=>price[1]),
                                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                                         borderColor: 'rgba(75, 192, 192, 1)',
                                         borderWidth: 1,
                                     },
                                     {
-                                        label: `Price of ${options.optionB} in USD`,
+                                        label: `Price of ${compare.optionB} in USD`,
                                         data: priceB.map(price=>price[1]),
                                         backgroundColor: 'rgba(76, 230, 14, 0.2)',
                                         borderColor: 'rgb(207, 38, 142)',
@@ -111,7 +111,7 @@ function Compare() {
                         }}
                 />     
             }
-    </>  
+    </main>  
 )}
 
 export default Compare
